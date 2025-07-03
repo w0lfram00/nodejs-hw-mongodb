@@ -4,7 +4,8 @@ const parseContactType = (contactType) => {
 };
 
 const parseBool = (bool) => {
-  if (typeof bool === 'boolean') return bool;
+  if (!(typeof bool === 'string')) return;
+  if (['true', 'false'].includes(bool)) return bool;
 };
 
 export const parseFilterParams = ({ isFavourite, contactType }) => {
