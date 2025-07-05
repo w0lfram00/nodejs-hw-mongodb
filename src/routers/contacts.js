@@ -13,33 +13,40 @@ import {
   updateContactSchema,
 } from '../validation/contacts.js';
 import { isValidId } from '../middlewares/isValidId.js';
+import { authenticate } from '../middlewares/authenticate.js';
+import { checkIsOwnerOfId } from '../middlewares/checkIsOwnerOfId.js';
 
 const contactRouter = Router();
 
-contactRouter.get('/contacts', ctrlWrapper(getAllContactsController));
+contactRouter.use(authenticate);
+
+contactRouter.get('/', ctrlWrapper(getAllContactsController));
 
 contactRouter.get(
-  '/contacts/:id',
+  '/:contactId',
   isValidId,
+  checkIsOwnerOfId,
   ctrlWrapper(getContactByIdController),
 );
 
 contactRouter.post(
-  '/contacts',
+  '',
   validateBody(createContactSchema),
   ctrlWrapper(postContactController),
 );
 
 contactRouter.patch(
-  '/contacts/:id',
+  '/:contactId',
   isValidId,
+  checkIsOwnerOfId,
   validateBody(updateContactSchema),
   ctrlWrapper(updateContactController),
 );
 
 contactRouter.delete(
-  '/contacts/:id',
+  '/:contactId',
   isValidId,
+  checkIsOwnerOfId,
   ctrlWrapper(deleteContactController),
 );
 
