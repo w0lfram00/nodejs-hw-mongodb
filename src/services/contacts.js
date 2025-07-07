@@ -12,6 +12,8 @@ export const getAllContacts = async ({
 }) => {
   const skip = (page - 1) * perPage;
 
+  console.log(userId);
+
   const contactsQuery = ContactsCollection.find({ userId });
 
   if (filter.isFavourite)

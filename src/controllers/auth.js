@@ -19,7 +19,7 @@ const setupSession = (res, session) => {
     httpOnly: true,
     expires: session.refreshTokenValidUntil,
   });
-  res.cookie('sessionId', session.accessToken, {
+  res.cookie('sessionId', session._id, {
     httpOnly: true,
     expires: session.refreshTokenValidUntil,
   });
