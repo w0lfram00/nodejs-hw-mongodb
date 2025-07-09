@@ -15,6 +15,7 @@ import {
 import { isValidId } from '../middlewares/isValidId.js';
 import { authenticate } from '../middlewares/authenticate.js';
 import { checkIsOwnerOfId } from '../middlewares/checkIsOwnerOfId.js';
+import { upload } from '../middlewares/multer.js';
 
 const contactRouter = Router();
 
@@ -30,7 +31,8 @@ contactRouter.get(
 );
 
 contactRouter.post(
-  '',
+  '/',
+  upload.single('photo'),
   validateBody(createContactSchema),
   ctrlWrapper(postContactController),
 );
@@ -39,6 +41,7 @@ contactRouter.patch(
   '/:contactId',
   isValidId,
   checkIsOwnerOfId,
+  upload.single('photo'),
   validateBody(updateContactSchema),
   ctrlWrapper(updateContactController),
 );
