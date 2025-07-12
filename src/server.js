@@ -1,11 +1,12 @@
 import express from 'express';
-import { pinoHttp } from 'pino-http';
+// import { pinoHttp } from 'pino-http';
 import cors from 'cors';
 import { getEnvVar } from './utils/getEnvVar.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import router from './routers/index.js';
 import cookieParser from 'cookie-parser';
+import { swaggerDocs } from './middlewares/swaggerDocs.js';
 
 const PORT = +getEnvVar('PORT');
 
@@ -15,6 +16,7 @@ export const setupServer = () => {
   app.use(express.json());
   app.use(cors());
   app.use(cookieParser());
+  app.use('/api-docs', swaggerDocs());
 
   // app.use(
   //   pinoHttp({

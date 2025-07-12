@@ -1,0 +1,50 @@
+tags:
+  - auth
+summary: Login
+operationId: login
+description: 'Login in account'
+security:
+  - bearerAuth: []
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - email
+          - password
+        properties:
+          email:
+            description: "User's email"
+            type: string
+            example: exmple@gmail.com
+          password:
+            description: "User's password"
+            type: string
+            example: 1234qwerty
+responses:
+  '200':
+    description: Successfully logged in an user!
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully logged in an user!
+            data:
+              type: object
+              required:
+                - accessToken
+              properties:
+                accessToken:
+                  description: Token for accessing created session
+                  example: 'KPB1q/g1Kj6+Pr5Fr3Vm5hIzcCdHeMkeh3+tLfGr'
