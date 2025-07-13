@@ -361,7 +361,7 @@
         ],
         "requestBody": {
           "content": {
-            "multipart/formdata": {
+            "multipart/form-data": {
               "schema": {
                 "type": "object",
                 "properties": {
