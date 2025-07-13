@@ -229,7 +229,7 @@
                     "example": "home"
                   },
                   "photo": {
-                    "description": "Student's photo",
+                    "description": "Contact's photo",
                     "type": "string",
                     "format": "binary"
                   }
@@ -396,7 +396,7 @@
                     "example": "home"
                   },
                   "photo": {
-                    "description": "Student's photo",
+                    "description": "Contact's photo",
                     "type": "string",
                     "format": "binary"
                   }
